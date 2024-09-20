@@ -2,7 +2,6 @@
 #include "ESP32Servo.h"
 #include "esp32-hal-gpio.h"
 #include "esp32-hal.h"
-#include "pins_arduino.h"
 #include <cstdint>
 
 inline const uint8_t SERVO_PIN = 18;
@@ -17,13 +16,11 @@ Servo servo;
 void openClaw(Servo *servo) {
   Serial.println("Abrindo garra");
   servo->write(OPEN_ANGLE);
-  delay(1000);
 }
 
 void closeClaw(Servo *servo) {
   Serial.println("Fechando garra");
   servo->write(CLOSE_ANGLE);
-  delay(1000);
 }
 
 void setup() {
@@ -39,10 +36,10 @@ void setup() {
   delay(100);
 
   openClaw(&servo);
+  delay(500);
 
   closeClaw(&servo);
-
-  openClaw(&servo);
+  delay(500);
 
   digitalWrite(LED_BUILTIN, HIGH);
 }
